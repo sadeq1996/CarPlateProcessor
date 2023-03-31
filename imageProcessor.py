@@ -2,7 +2,7 @@ import cv2
 import pytesseract
 
 # Load image
-img = cv2.imread(r"3.jpg")
+img = cv2.imread(r"plate8.jpg")
 
 #* pytessract
 pytesseract.pytesseract.tesseract_cmd =\
@@ -22,7 +22,7 @@ edges = cv2.Canny(blur, 50, 150)
 contours, hierarchy = cv2.findContours(edges, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
 # Draw the contours on the original image
-b=cv2.drawContours(img, contours, -1, (0, 255, 0), 1)
+cv2.drawContours(img, contours, -1, (0, 255, 0), 1)
 
 resized_img = cv2.resize(img, (200, 200))
 # Iterate through contours and filter for rectangular shapes
